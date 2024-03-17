@@ -1,4 +1,5 @@
 import string
+from collections import Counter
 
 text = open('read.txt', encoding='utf-8').read()
 textLower = text.lower()
@@ -19,4 +20,14 @@ for i in tokenizeWords:
     if i not in stopWords:
         finalWords.append(i)
 
-print(finalWords)
+emotionList = []
+with open('emotion.txt', 'r') as file:
+    for line in file:
+        clearLine = line.replace('\n', '').replace(',', '').replace('\'', '').strip()
+        word, emotion = clearLine.split(':')
+        if word in finalWords:
+            emotionList.append(emotion)
+
+print(emotionList)
+counter = Counter(emotionList)
+print(counter)
