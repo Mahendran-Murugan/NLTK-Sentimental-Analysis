@@ -1,5 +1,6 @@
 import string
 from collections import Counter
+import matplotlib.pyplot as plt
 
 text = open('read.txt', encoding='utf-8').read()
 textLower = text.lower()
@@ -31,3 +32,10 @@ with open('emotion.txt', 'r') as file:
 print(emotionList)
 counter = Counter(emotionList)
 print(counter)
+
+
+fig, ax1 = plt.subplots()
+ax1.bar(counter.keys(), counter.values())
+fig.autofmt_xdate()
+plt.savefig("graph.png")
+plt.show()
