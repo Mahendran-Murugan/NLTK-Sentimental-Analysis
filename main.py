@@ -1,2 +1,5 @@
+import string
 text = open('read.txt', encoding='utf-8').read()
-print(text)
+textLower = text.lower()
+cleanText = textLower.translate(str.maketrans("", "", string.punctuation))
+print(cleanText)
